@@ -1,28 +1,29 @@
-Info:
-  nom: STD23044 - TD1
+info:
+  title: STD23044 - TD1
   version: 1.0.0
 
-Server:
-  - URL: https://localhost.STD23044.com
+servers:
+  - url: https://localhost.STD23044.com
 
-Path:
+paths:
   /customers:
     get:
-      response:
+      responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-              type: array
-              items: '#/Components/schema/Customers'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customers'
 
-  Components:
-    schema:
-      Customers:
-        type: object
-        properties:
-          name:
-            type: String
-          age:
-            type: Integer
+components:
+  schemas:
+    Customers:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
