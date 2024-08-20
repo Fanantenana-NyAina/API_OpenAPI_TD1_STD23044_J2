@@ -1,3 +1,4 @@
+openapi: 3.0.3
 info:
   title: STD23044 - TD1
   version: 1.0.0
