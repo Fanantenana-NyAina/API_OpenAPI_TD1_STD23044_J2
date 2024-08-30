@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: STD23044 - TD3
+  version: 1.0.0
+
+servers:
+  - url: https://localhost.STD23044.com
+  
+paths:
+  /meal:
+    get:
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meal'
+                  
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: integer
+      
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: integer
+          
+    post: 
+      requestBody: 
+        content: 
+          application/json:
+            schema:
+              type: array
+              properties:
+                name: 
+                  type: string
+                price:
+                  type: string
+                  format: double
+              items:
+                $ref: '#/components/schemas/Meal'
+      responses:
+        '201':
+          description: data created
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meal'
+          
+    
+          
+components:
+  schemas:
+    Meal:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: string
+          format: double
+        id: 
+          type: string
+          format: integer
